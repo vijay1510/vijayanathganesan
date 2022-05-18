@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Logo from "./icons/Logo";
 import Arrow from "./icons/Arrow";
+import Cart from "./icons/Cart";
 
 export default class Header extends Component {
   render() {
@@ -18,11 +19,16 @@ export default class Header extends Component {
             </li>
           </nav>
           <nav className='header_cart'>
-            <li>$</li>
             <li>
-              <Arrow />
+              $
+              <span style={{ marginLeft: 10 }} onClick={() => alert("heloo")}>
+                <Arrow />
+              </span>
             </li>
-            <li>cart</li>
+
+            <li>
+              <Cart />
+            </li>
           </nav>
         </header>
       </>

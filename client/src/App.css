@@ -1,5 +1,7 @@
 @import "normalize";
 @import "./css/Header.css";
+@import "./css/AllProducts.css";
+@import "./css/Product.css";
 
 *,
 html,

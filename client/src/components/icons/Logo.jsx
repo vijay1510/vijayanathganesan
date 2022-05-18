@@ -4,15 +4,15 @@ export default class Logo extends Component {
   render() {
     return (
       <svg
-        width='33'
-        height='30'
+        width='70'
+        height='50'
         viewBox='0 0 33 30'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'>
         <rect width='33' height='30' fill='#E5E5E5' />
         <rect x='-703' y='-30' width='1440' height='1513' fill='white' />
         <rect x='-703' y='-30' width='1440' height='80' fill='white' />
-        <g clip-path='url(#clip0_0_1)'>
+        <g clipPath='url(#clip0_0_1)'>
           <path
             d='M30.0222 22.6646C30.0494 22.983 29.8009 23.2566 29.4846 23.2566H3.46924C3.15373 23.2566 2.90553 22.9843 2.93156 22.6665L4.7959 -0.0877309C4.8191 -0.370382 5.05287 -0.587891 5.33372 -0.587891H27.5426C27.8226 -0.587891 28.0561 -0.371473 28.0801 -0.0896389L30.0222 22.6646Z'
             fill='#1DCF65'
@@ -38,8 +38,8 @@ export default class Logo extends Component {
             x2='7.51325'
             y2='3.9008'
             gradientUnits='userSpaceOnUse'>
-            <stop stop-color='#52D67A' />
-            <stop offset='1' stop-color='#5AEE87' />
+            <stop stopColor='#52D67A' />
+            <stop offset='1' stopColor='#5AEE87' />
           </linearGradient>
           <clipPath id='clip0_0_1'>
             <rect
