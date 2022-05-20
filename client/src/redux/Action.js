@@ -15,7 +15,7 @@ export const getAllProducts = () => {
         }),
       });
       const allproductJson = await allproduct.json();
-      dispatch(allProducts(allproductJson.data.categories[0].products));
+      dispatch(allProducts(allproductJson.data.categories));
     } catch (error) {
       console.log(error);
     }
@@ -30,3 +30,13 @@ export const allProducts = (data) => {
 };
 
 //-------------------------------------------------------------------------
+
+//filter products
+export const filterProducts = (data) => {
+  return {
+    type: "FILTERED",
+    payload: data,
+  };
+};
+
+//--------------------------------------------------------------

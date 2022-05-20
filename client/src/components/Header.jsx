@@ -1,17 +1,27 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Logo from "./icons/Logo";
 import Arrow from "./icons/Arrow";
 import Cart from "./icons/Cart";
+import { filterProducts } from "../redux/Action";
 
-export default class Header extends Component {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clothes: () => dispatch(filterProducts("clothes")),
+    tech: () => dispatch(filterProducts("tech")),
+    all: () => dispatch(filterProducts("all")),
+  };
+};
+
+class Header extends Component {
   render() {
     return (
       <>
         <header className='header'>
           <nav className='header_category'>
-            <li>ALL</li>
-            <li>CLOTHES</li>
-            <li>TECH</li>
+            <li onClick={this.props.all}>ALL</li>
+            <li onClick={this.props.clothes}>CLOTHES</li>
+            <li onClick={this.props.tech}>TECH</li>
           </nav>
           <nav className='header_logo'>
             <li>
@@ -35,3 +45,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default connect(mapDispatchToProps)(Header);

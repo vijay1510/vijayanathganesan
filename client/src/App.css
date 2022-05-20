@@ -2,6 +2,7 @@
 @import "./css/Header.css";
 @import "./css/AllProducts.css";
 @import "./css/Product.css";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap");
 
 *,
 html,
@@ -9,4 +10,5 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
 }

@@ -1,6 +1,7 @@
 const initialState = {
-  currency: null,
+  first: null,
   allProducts: null,
+  filtered: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -9,6 +10,15 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         allProducts: action.payload,
+        first: action.payload.filter((e) => e.name === "all"),
+      };
+    }
+    case "FILTERED": {
+      return {
+        ...state,
+        filtered:
+          state.allProducts &&
+          state.allProducts.filter((e) => e.name === action.payload),
       };
     }
 
