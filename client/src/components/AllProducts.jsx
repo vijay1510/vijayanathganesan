@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Product from "./Product";
-import { getAllProducts, filterProducts } from "../redux/Action";
+import { getAllProducts } from "../redux/Action";
 
 const mapStateToProps = (state) => {
   return {
@@ -14,7 +14,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllProducts: () => dispatch(getAllProducts()),
-    filterProduct: () => dispatch(filterProducts("clothes")),
   };
 };
 
@@ -26,7 +25,7 @@ class AllProducts extends Component {
   render() {
     return (
       <>
-        <button onClick={this.props.filterProduct}>click</button>
+        <h1>CATEGORY NAME</h1>
         {this.props.filtered && (
           <div className='allproducts'>
             {this.props.filtered[0].products.map((all) => (

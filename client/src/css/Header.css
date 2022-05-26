@@ -3,11 +3,12 @@
   height: 80px;
   display: flex;
   justify-content: space-around;
-  padding-top: 40px;
+  padding-top: 20px;
 }
+
 nav li {
   list-style: none;
-  margin-right: 15px;
+  margin-right: 10px;
   margin-left: 5px;
   cursor: pointer;
 }
@@ -21,7 +22,33 @@ nav li {
 
   color: #1d1f22;
 }
+.header_dialog {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  border: 1px solid #eee;
+  background-color: #fff;
+  margin-top: 12px;
+  text-align: center;
+}
+.header_currency {
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 160%;
+  text-align: center;
+  color: #1d1f22;
+  background-color: white;
 
+  margin-bottom: 5px;
+}
+.header_currency:hover {
+  width: 100px;
+  height: 45px;
+  background-color: #eee;
+  padding-top: 10px;
+}
 .header_category li:hover {
   color: #5ece7b;
   font-weight: 600;
@@ -36,9 +63,7 @@ nav li {
 
 @media (max-width: 1408px) {
   .header {
-    justify-content: space-between;
-  }
-  li {
+    justify-content: space-around;
     margin-right: 10px;
   }
 }

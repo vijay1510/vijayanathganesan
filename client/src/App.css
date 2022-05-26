@@ -2,8 +2,9 @@
 @import "./css/Header.css";
 @import "./css/AllProducts.css";
 @import "./css/Product.css";
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap");
-
+@import "./css/ProductDetails.css";
+@import "./css/Attributes.css";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap");
 *,
 html,
 body {

@@ -4,8 +4,8 @@ export default class Logo extends Component {
   render() {
     return (
       <svg
-        width='60'
-        height='40'
+        width='35'
+        height='30'
         viewBox='0 0 33 30'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'>

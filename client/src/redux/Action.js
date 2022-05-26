@@ -1,4 +1,4 @@
-import { AllProducts } from "./Allqueries";
+import { AllProducts, productDetails, currencyInfo } from "./Allqueries";
 
 //get all products
 
@@ -40,3 +40,76 @@ export const filterProducts = (data) => {
 };
 
 //--------------------------------------------------------------
+
+//getProductDetails
+export const getDetails = (detail) => {
+  return async (dispatch, getState) => {
+    try {
+      const details = await fetch("http://localhost:4000/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: productDetails,
+          variables: { id: detail },
+        }),
+      });
+      const detaislJson = await details.json();
+
+      dispatch(allDetails(detaislJson.data.product));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const allDetails = (data) => {
+  return {
+    type: "PRODUCTS_DETAILS",
+    payload: data,
+  };
+};
+//---------------------------------------------------------------------------------------
+
+//getcurrency details
+
+export const getCurrency = () => {
+  return async (dispatch, getState) => {
+    try {
+      const currency = await fetch("http://localhost:4000/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: currencyInfo,
+        }),
+      });
+      const currencyJson = await currency.json();
+      dispatch(currencyState(currencyJson.data.currencies));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const currencyState = (data) => {
+  return {
+    type: "CURRENCY_DETAILS",
+    payload: data,
+  };
+};
+
+//-----------------------------------------------------------------------------
+
+//symbol
+
+export const symbolChange = (data) => {
+  return {
+    type: "SYMBOL_CHANGE",
+    payload: data,
+  };
+};
+
+//---------------------------------------------------------------------
