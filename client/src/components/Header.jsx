@@ -58,7 +58,7 @@ class Header extends Component {
                 onClick={() =>
                   this.setState({ clicked: this.state.clicked ? false : true })
                 }>
-                <Arrow color='red' />
+                <Arrow />
                 <div
                   style={{ display: !this.state.clicked ? "block" : "none" }}
                   className='header_dialog'>

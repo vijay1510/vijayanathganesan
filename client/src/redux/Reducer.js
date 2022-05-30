@@ -5,6 +5,7 @@ const initialState = {
   details: null,
   currency: null,
   symbol: "$",
+  cart: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -40,6 +41,13 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         symbol: action.payload,
+      };
+    }
+    case "ADD_TO_CART": {
+      console.log(action.payload);
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
       };
     }
     default:

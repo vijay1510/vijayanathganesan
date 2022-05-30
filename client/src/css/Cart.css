@@ -1,0 +1,6 @@
+.cart {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 5% 25px 5%;
+  flex-wrap: wrap;
+}

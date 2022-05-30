@@ -36,7 +36,6 @@ class ProductDetails extends Component {
     const { id, name, description, gallery, attributes, brand, prices } =
       this.props.details;
     const price = prices.filter((e) => e.currency.symbol === this.props.symbol);
-    console.log(this.state.image);
 
     return (
       <>
@@ -67,7 +66,11 @@ class ProductDetails extends Component {
               <span style={{ marginRight: 2 }}>{price[0].currency.symbol}</span>
               {Math.round(price[0].amount).toFixed(2)}
             </p>
-            <button className='details_btn'>ADD TO CART</button>
+            <button
+              className='details_btn'
+              onClick={() => console.log(this.props.details)}>
+              ADD TO CART
+            </button>
             <div
               className='details_description'
               dangerouslySetInnerHTML={{

@@ -4,6 +4,8 @@
 @import "./css/Product.css";
 @import "./css/ProductDetails.css";
 @import "./css/Attributes.css";
+@import "./css/AllCart.css";
+@import "./css/Cart.css";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap");
 *,
 html,

@@ -113,3 +113,14 @@ export const symbolChange = (data) => {
 };
 
 //---------------------------------------------------------------------
+
+//Add to cart
+
+export const addToCart = (data) => {
+  return {
+    type: "ADD_TO_CART",
+    payload: data,
+  };
+};
+
+//-------------------------------------------------------------------------

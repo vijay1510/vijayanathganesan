@@ -12,7 +12,7 @@ export const AllProducts = `{
           currency { label symbol }
           amount
         }
-   
+    attributes{ id name type items { displayValue id value } }
     brand
   }
 }
