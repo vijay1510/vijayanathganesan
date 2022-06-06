@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import Attributes from "./Attributes";
 
-class Cart extends Component {
+class MiniCart extends Component {
   render() {
     const { id, name, gallery, prices, inStock, brand, attributes } =
       this.props;
     return (
       <>
-        <hr />
-        <div className='cart'>
+        <div className='mini_cart'>
           <div>
-            <h1>{brand}</h1>
-            <h3>{name}</h3>
+            <h1 className='mini_name'>
+              {brand} {name}
+            </h1>
 
-            <p>PRICE:</p>
-            <p>
+            <p className='mini_price'>
               <span style={{ marginRight: 2 }}>
                 {prices[0].currency.symbol}
               </span>
@@ -26,12 +25,8 @@ class Cart extends Component {
           <div>
             <button>+</button>
             <p>1</p>
+            <img className='mini_img' src={gallery[0]} alt={id} />
             <button>-</button>
-            <img
-              src={gallery[0]}
-              alt={id}
-              style={{ height: 200, width: 200 }}
-            />
           </div>
         </div>
       </>
@@ -39,4 +34,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default MiniCart;

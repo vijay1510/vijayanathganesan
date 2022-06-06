@@ -1,0 +1,36 @@
+.mini_cart {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.mini_name {
+  width: 136px;
+  height: 52px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #1d1f22;
+}
+.mini_price {
+  width: 52px;
+  height: 26px;
+
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+  /* identical to box height, or 26px */
+
+  text-align: right;
+
+  color: #1d1f22;
+}
+.mini_img {
+  width: 121px;
+  height: 190px;
+}

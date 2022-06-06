@@ -6,6 +6,7 @@ import Arrow from "./icons/Arrow";
 import Cart from "./icons/Cart";
 import { filterProducts, getCurrency, symbolChange } from "../redux/Action";
 import { Link } from "react-router-dom";
+import AllMiniCart from "./AllMiniCart";
 
 const mapStateToProps = (state) => {
   return {
@@ -26,10 +27,14 @@ class Header extends Component {
     super(props);
     this.state = {
       clicked: true,
+      cartClicked: true,
+      height: window.innerHeight,
+      width: window.innerWidth,
     };
   }
   componentDidMount() {
     this.props.getCurrency();
+    this.setState({ width: window.innerWidth });
   }
 
   render() {
@@ -56,7 +61,10 @@ class Header extends Component {
               <span
                 style={{ marginLeft: 10 }}
                 onClick={() =>
-                  this.setState({ clicked: this.state.clicked ? false : true })
+                  this.setState({
+                    clicked: this.state.clicked ? false : true,
+                    winHeight: window.screen.availHeight,
+                  })
                 }>
                 <Arrow />
                 <div
@@ -75,13 +83,29 @@ class Header extends Component {
               </span>
             </li>
 
-            <li>
-              <Link to='/cart'>
-                <Cart />
-              </Link>
+            <li
+              onClick={(e) =>
+                this.setState({
+                  cartClicked: this.state.cartClicked ? false : true,
+                  winHeight: window.screen.availHeight,
+                })
+              }>
+              <Cart />
+              <div className='header_badge'>3</div>
+
+              <div
+                style={{ display: !this.state.cartClicked ? "block" : "none" }}>
+                <AllMiniCart />
+              </div>
             </li>
           </nav>
         </header>
+        <div
+          onClick={() =>
+            this.setState({ cartClicked: !this.state.cartClicked })
+          }
+          className='header_blur'
+          style={{ display: !this.state.cartClicked ? "block" : "none" }}></div>
       </>
     );
   }

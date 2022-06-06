@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Attributes from "./Attributes";
-import { getDetails } from "../redux/Action";
+import { getDetails, addToCart } from "../redux/Action";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -13,10 +13,11 @@ const mapStateToProps = (state) => {
   return {
     details: state.details,
     symbol: state.symbol,
+    size: state.attr,
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ getDetails: getDetails }, dispatch);
+  return bindActionCreators({ getDetails, addToCart }, dispatch);
 };
 
 class ProductDetails extends Component {
@@ -60,7 +61,9 @@ class ProductDetails extends Component {
             <h1 className='details_brand'>{brand}</h1>
             <h2 className='details_name'>{name}</h2>
             {attributes &&
-              attributes.map((e) => <Attributes key={e.id} {...e} />)}
+              attributes.map((e) => (
+                <Attributes key={e.id} {...e} name={name} />
+              ))}
             <p className='details_price'>PRICE:</p>
             <p className='details_price_value'>
               <span style={{ marginRight: 2 }}>{price[0].currency.symbol}</span>
@@ -68,7 +71,7 @@ class ProductDetails extends Component {
             </p>
             <button
               className='details_btn'
-              onClick={() => console.log(this.props.details)}>
+              onClick={() => this.props.addToCart(this.props.details)}>
               ADD TO CART
             </button>
             <div

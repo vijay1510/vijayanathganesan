@@ -1,14 +1,42 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { att } from "../redux/Action";
 
-export default class Attributes extends Component {
+const mapStateToProps = (state) => {
+  return {
+    value: state.attr,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ att: att }, dispatch);
+};
+
+class Attributes extends Component {
   state = {
     selected: null,
-    choose: "false",
+    cart: [],
   };
 
+  componentDidMount() {
+    if (this.state.cart.length === 0) {
+      return this.setState({
+        selected: this.props.items[0].displayValue,
+      });
+    } else if (this.state.cart.length !== 0) {
+      this.setState({ selected: this.state.cart });
+    }
+  }
   render() {
     const attributes = this.props;
-    attributes.items.map((e) => (e.active = this.state.choose));
+
+    const handleClick = (k) => {
+      this.setState({
+        selected: k.displayValue,
+        cart: k.displayValue,
+      });
+    };
 
     return (
       <>
@@ -16,12 +44,7 @@ export default class Attributes extends Component {
 
         {attributes.items.map((item) => (
           <div
-            onClick={() =>
-              this.setState({
-                selected: item.displayValue,
-                choose: "true",
-              })
-            }
+            onClick={() => handleClick(item)}
             className={`${
               attributes.id === "Color"
                 ? "attributes_color"
@@ -38,6 +61,8 @@ export default class Attributes extends Component {
                 ? "color"
                 : ""
             }
+
+          
                 `}
             style={{
               backgroundColor: item.value,
@@ -49,3 +74,5 @@ export default class Attributes extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Attributes);

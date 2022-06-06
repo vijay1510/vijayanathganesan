@@ -24,7 +24,9 @@ class Product extends Component {
     return (
       <div style={{ opacity: !inStock ? 0.4 : 1 }} className='product'>
         <div className='product_cart'>
-          <p className='product_icon' onClick={() => addToCart(this.props)}>
+          <p
+            className='product_icon'
+            onClick={() => inStock && addToCart(this.props)}>
             <Cart />
           </p>
         </div>

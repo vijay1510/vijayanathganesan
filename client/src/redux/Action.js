@@ -124,3 +124,11 @@ export const addToCart = (data) => {
 };
 
 //-------------------------------------------------------------------------
+
+//selecting attribute
+export const att = (data) => {
+  return {
+    type: "ATTRIBUTE",
+    payload: data,
+  };
+};

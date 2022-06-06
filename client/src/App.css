@@ -6,6 +6,9 @@
 @import "./css/Attributes.css";
 @import "./css/AllCart.css";
 @import "./css/Cart.css";
+@import "./css/Attr.css";
+@import "./css/MiniCart.css";
+@import "./css/AllMiniCart.css";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap");
 *,
 html,
