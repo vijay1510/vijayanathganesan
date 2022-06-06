@@ -1,4 +1,40 @@
-import { AllProducts, productDetails, currencyInfo } from "./Allqueries";
+import {
+  AllProducts,
+  productDetails,
+  currencyInfo,
+  category,
+} from "./Allqueries";
+
+//get category
+
+export const getCategory = () => {
+  return async (dispatch, getState) => {
+    try {
+      const categories = await fetch("http://localhost:4000/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: category,
+        }),
+      });
+      const allcategories = await categories.json();
+      dispatch(allCategory(allcategories.data.categories));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const allCategory = (data) => {
+  return {
+    type: "ALL_CATEGORY",
+    payload: data,
+  };
+};
+
+//------------------------------------------------------------------
 
 //get all products
 
@@ -129,6 +165,15 @@ export const addToCart = (data) => {
 export const att = (data) => {
   return {
     type: "ATTRIBUTE",
+    payload: data,
+  };
+};
+
+//-----------------------------------------------------------------------------
+//save category name
+export const getName = (data) => {
+  return {
+    type: "GET_NAME",
     payload: data,
   };
 };

@@ -40,3 +40,5 @@ export const currencyInfo = `query {
 }
 
 `;
+
+export const category = `query{categories {name }}`;

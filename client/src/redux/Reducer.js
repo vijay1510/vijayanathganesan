@@ -7,6 +7,8 @@ const initialState = {
   symbol: "$",
   cart: [],
   attr: [],
+  category: null,
+  getName: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -54,6 +56,18 @@ export const reducer = (state = initialState, action) => {
     case "ATTRIBUTE": {
       return {
         ...state,
+      };
+    }
+    case "ALL_CATEGORY": {
+      return {
+        ...state,
+        category: action.payload,
+      };
+    }
+    case "GET_NAME": {
+      return {
+        ...state,
+        getName: action.payload,
       };
     }
     default:

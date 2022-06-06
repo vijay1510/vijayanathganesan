@@ -4,7 +4,12 @@ import { connect } from "react-redux";
 import Logo from "./icons/Logo";
 import Arrow from "./icons/Arrow";
 import Cart from "./icons/Cart";
-import { filterProducts, getCurrency, symbolChange } from "../redux/Action";
+import {
+  filterProducts,
+  getCurrency,
+  symbolChange,
+  getCategory,
+} from "../redux/Action";
 import { Link } from "react-router-dom";
 import AllMiniCart from "./AllMiniCart";
 
@@ -12,12 +17,14 @@ const mapStateToProps = (state) => {
   return {
     currency: state.currency,
     symbol: state.symbol,
+    category: state.category,
+    cart: state.cart,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { filterProducts, getCurrency, symbolChange },
+    { filterProducts, getCurrency, symbolChange, getCategory },
     dispatch
   );
 };
@@ -28,25 +35,29 @@ class Header extends Component {
     this.state = {
       clicked: true,
       cartClicked: true,
-      height: window.innerHeight,
-      width: window.innerWidth,
+      categoryName: "tech",
     };
   }
   componentDidMount() {
     this.props.getCurrency();
-    this.setState({ width: window.innerWidth });
+    this.props.getCategory();
   }
 
   render() {
     return (
       <>
         <header className='header'>
-          <nav className='header_category'>
-            <li onClick={() => this.props.filterProducts("all")}>ALL</li>
-            <li onClick={() => this.props.filterProducts("clothes")}>
-              CLOTHES
-            </li>
-            <li onClick={() => this.props.filterProducts("tech")}>TECH</li>
+          <nav className='header_category '>
+            {this.props.category &&
+              this.props.category.map((e) => (
+                <Link to='/' style={{ textDecoration: "none" }}>
+                  <li
+                    onClick={() => this.props.filterProducts(e.name)}
+                    key={e.name}>
+                    {e.name}
+                  </li>
+                </Link>
+              ))}
           </nav>
           <nav className='header_logo'>
             <li>
@@ -91,7 +102,9 @@ class Header extends Component {
                 })
               }>
               <Cart />
-              <div className='header_badge'>3</div>
+              {this.props.cart.length !== 0 && (
+                <div className='header_badge'>{this.props.cart.length}</div>
+              )}
 
               <div
                 style={{ display: !this.state.cartClicked ? "block" : "none" }}>

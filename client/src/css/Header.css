@@ -11,7 +11,15 @@ nav li {
   margin-right: 10px;
   margin-left: 5px;
   cursor: pointer;
+  text-transform: uppercase;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: #1d1f22;
 }
+
 .header_category {
   display: flex;
   justify-content: space-between;
@@ -52,8 +60,8 @@ nav li {
 .header_category li:hover {
   color: #5ece7b;
   font-weight: 600;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #5ece7b;
+  padding-bottom: 25px;
+  border-bottom: 2px solid #5ece7b;
 }
 
 .header_cart {
@@ -74,7 +82,7 @@ nav li {
 .header_badge {
   height: 22px;
   width: 22px;
-  border: 1px solid green;
+
   border-radius: 100%;
   background-color: #1d1f22;
   position: relative;
@@ -84,7 +92,7 @@ nav li {
   text-align: center;
 
   padding-top: -2px;
-  padding-bottom: 5px;
+  padding-bottom: 22px;
 }
 
 @media (max-width: 1408px) {
