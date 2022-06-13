@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ att: att }, dispatch);
 };
 
-class Attributes extends Component {
+class MiniCartAttribute extends Component {
   state = {
     selected: null,
     cart: [],
@@ -37,18 +37,22 @@ class Attributes extends Component {
   }
   render() {
     const attributes = this.props;
+    //console.log(this.props.fin[0][1], "attribur");
 
-    const handleClick = (item) => {
+    const handleClick = (k) => {
       this.setState({
-        selected: item.displayValue,
-        cart: item.displayValue,
+        selected: k.displayValue,
+        cart: k.displayValue,
       });
-      this.props.handleUpdate({ id: attributes.id, item });
+      this.props.handleUpdate({ id: attributes.id, k });
+      //console.log([attributes.id, k.displayValue]);
     };
 
     return (
       <>
-        <h4 className='attributes_name'>{attributes && attributes.id + ":"}</h4>
+        <h4 className='mini_attributes_name'>
+          {attributes && attributes.id + ":"}
+        </h4>
 
         {attributes.items.map((item) => (
           <div
@@ -56,21 +60,20 @@ class Attributes extends Component {
             onClick={() => this.state.clicked && handleClick(item)}
             className={`${
               attributes.id === "Color"
-                ? "attributes_color"
-                : "attributes_value"
+                ? "mini_attributes_color"
+                : "mini_attributes_value"
             }   ${
               item.displayValue === this.state.selected &&
               attributes.id !== "Color"
                 ? "click"
                 : ""
             }
-              ${
-                attributes.id !== "Color" &&
-                this.state.select?.includes(item.displayValue)
-                  ? "click"
-                  : ""
-              }
-
+            ${
+              attributes.id !== "Color" &&
+              this.state.select?.includes(item.displayValue)
+                ? "click"
+                : ""
+            }
 
             ${
               attributes.id === "Color" &&
@@ -78,12 +81,13 @@ class Attributes extends Component {
                 ? "color"
                 : ""
             }
-            ${
-              attributes.id === "Color" &&
-              this.state.select?.includes(item.displayValue)
-                ? "color"
-                : ""
-            }
+              ${
+                attributes.id === "Color" &&
+                this.state.select?.includes(item.displayValue)
+                  ? "color"
+                  : ""
+              }
+
 
           
                 `}
@@ -98,4 +102,4 @@ class Attributes extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Attributes);
+export default connect(mapStateToProps, mapDispatchToProps)(MiniCartAttribute);

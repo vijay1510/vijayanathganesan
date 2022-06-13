@@ -159,6 +159,13 @@ export const addToCart = (data) => {
   };
 };
 
+export const addToCartWithAtrributes = (data) => {
+  return {
+    type: "CART_WITH_ATTRIBUTES",
+    payload: data,
+  };
+};
+
 //-------------------------------------------------------------------------
 
 //selecting attribute
@@ -177,3 +184,22 @@ export const getName = (data) => {
     payload: data,
   };
 };
+//--------------------------------------------------------------
+
+//increment decrement
+
+export const increment = (data) => {
+  return {
+    type: "INCREMENT",
+    payload: data,
+  };
+};
+
+export const decrement = (data) => {
+  return {
+    type: "DECREMENT",
+    payload: data,
+  };
+};
+
+//-------------------------------------------

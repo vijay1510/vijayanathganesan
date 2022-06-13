@@ -15,7 +15,7 @@ export default class App extends Component {
           <Route exact path='/'>
             <AllProducts />
           </Route>
-          <Route exact path='/product/:details'>
+          <Route exact path='/product/:productDetails'>
             <ProductDetails />
           </Route>
           <Route exact path='/cart'>

@@ -6,7 +6,6 @@ const initialState = {
   currency: null,
   symbol: "$",
   cart: [],
-  attr: [],
   category: null,
   getName: null,
 };
@@ -47,17 +46,51 @@ export const reducer = (state = initialState, action) => {
       };
     }
     case "ADD_TO_CART": {
+      const data = action.payload;
+
+      const isAvailable = state.cart.findIndex((e) => e.altId === data.altId);
+      if (isAvailable === -1) {
+        return {
+          ...state,
+          cart: [...state.cart, data],
+        };
+      } else {
+        state.cart[isAvailable].amount = state.cart[isAvailable].amount + 1;
+        return {
+          ...state,
+          cart: [...state.cart],
+        };
+      }
+    }
+
+    case "INCREMENT": {
+      const isAvailable = state.cart.findIndex(
+        (e) => e.altId === action.payload
+      );
+      state.cart[isAvailable].amount = state.cart[isAvailable].amount + 1;
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart: [...state.cart],
       };
     }
 
-    case "ATTRIBUTE": {
+    case "DECREMENT": {
+      const isAvailable = state.cart.findIndex(
+        (e) => e.altId === action.payload
+      );
+      state.cart[isAvailable].amount = state.cart[isAvailable].amount - 1;
+      if (state.cart[isAvailable].amount === 0) {
+        return {
+          ...state,
+          cart: state.cart.filter((e) => e.altId !== action.payload),
+        };
+      }
       return {
         ...state,
+        cart: [...state.cart],
       };
     }
+
     case "ALL_CATEGORY": {
       return {
         ...state,

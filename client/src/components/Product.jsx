@@ -17,17 +17,33 @@ const mapDispatchToProps = (dispatch) => {
 };
 class Product extends Component {
   render() {
-    const { id, name, gallery, prices, inStock, addToCart } = this.props;
+    const { id, name, gallery, prices, inStock, addToCart, attributes } =
+      this.props;
 
     const price = prices.filter((e) => e.currency.symbol === this.props.symbol);
+    const selectedAttribute = attributes.map((e) => {
+      let id = e.id;
+      let item = e.items[0];
+      return { id, item };
+    });
+    const newId = selectedAttribute.map((e) => e.item.displayValue);
+    const altId = id + newId.join("");
 
     return (
       <div style={{ opacity: !inStock ? 0.4 : 1 }} className='product'>
         <div className='product_cart'>
           <p
             className='product_icon'
-            onClick={() => inStock && addToCart(this.props)}>
-            <Cart />
+            onClick={() =>
+              inStock &&
+              addToCart({
+                ...this.props,
+                amount: 1,
+                selectedAttributes: selectedAttribute,
+                altId: altId,
+              })
+            }>
+            <Cart color='white' />
           </p>
         </div>
         <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>

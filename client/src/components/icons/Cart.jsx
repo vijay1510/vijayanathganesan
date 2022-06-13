@@ -12,7 +12,7 @@ export default class Cart extends Component {
         preserveAspectRatio='xMidYMid meet'>
         <g
           transform='translate(0.000000,219.000000) scale(0.100000,-0.100000)'
-          fill='#43464E'
+          fill={this.props.color}
           stroke='none'>
           <path
             d='M26 2174 c-21 -21 -20 -57 2 -77 16 -15 45 -17 199 -17 179 0 181 0

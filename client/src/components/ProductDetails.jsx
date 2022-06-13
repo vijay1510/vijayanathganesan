@@ -6,14 +6,10 @@ import { bindActionCreators } from "redux";
 
 import { withRouter } from "react-router";
 
-//const { id } = this.props.params;
-//const id = this.props.match.params;
-
 const mapStateToProps = (state) => {
   return {
     details: state.details,
     symbol: state.symbol,
-    size: state.attr,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -25,12 +21,20 @@ class ProductDetails extends Component {
     super(props);
     this.state = {
       image: null,
+      selectedAttributes: [],
     };
   }
   componentDidMount() {
-    const { details } = this.props.match.params;
-
-    this.props.getDetails(details);
+    const { productDetails } = this.props.match.params;
+    this.props.getDetails(productDetails);
+    setTimeout(() => {
+      let selectedAttribute = this.props.details.attributes.map((e) => {
+        let id = e.id;
+        let item = e.items[0];
+        return { id, item };
+      });
+      this.setState({ selectedAttributes: selectedAttribute });
+    }, 100);
   }
   render() {
     if (this.props.details === null) return <h1>loading.......</h1>;
@@ -38,12 +42,24 @@ class ProductDetails extends Component {
       this.props.details;
     const price = prices.filter((e) => e.currency.symbol === this.props.symbol);
 
+    const handleUpdate = (...data) => {
+      const findIndexs = this.state.selectedAttributes.findIndex(
+        (e) => e.id === data[0].id
+      );
+      console.log(findIndexs);
+      const newItem = [...this.state.selectedAttributes];
+      newItem[findIndexs].item = data[0].item;
+
+      this.setState({ selectedAttributes: newItem });
+    };
+
     return (
       <>
         <div className='details'>
           <div className='details_gallery'>
             {gallery.map((e) => (
               <img
+                key={id}
                 src={e}
                 alt={id}
                 className='details_gallery_items'
@@ -62,7 +78,14 @@ class ProductDetails extends Component {
             <h2 className='details_name'>{name}</h2>
             {attributes &&
               attributes.map((e) => (
-                <Attributes key={e.id} {...e} name={name} />
+                <Attributes
+                  key={e.id}
+                  {...e}
+                  name={name}
+                  selectedAttributes={this.state.selectedAttributes}
+                  handleUpdate={handleUpdate}
+                  pclicked={true}
+                />
               ))}
             <p className='details_price'>PRICE:</p>
             <p className='details_price_value'>
@@ -71,7 +94,25 @@ class ProductDetails extends Component {
             </p>
             <button
               className='details_btn'
-              onClick={() => this.props.addToCart(this.props.details)}>
+              onClick={() =>
+                this.props.addToCart({
+                  id,
+                  name,
+                  gallery,
+                  attributes,
+                  brand,
+                  prices,
+                  alt: this.state.alt,
+                  selectedAttribute: this.state.selectedAttributes,
+                  amount: 1,
+                  selected: this.state.selectedAttributes.map((e) => e.item),
+                  altId:
+                    id +
+                    this.state.selectedAttributes
+                      .map((e) => e.item.displayValue)
+                      .join(""),
+                })
+              }>
               ADD TO CART
             </button>
             <div
@@ -89,3 +130,19 @@ class ProductDetails extends Component {
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(ProductDetails)
 );
+
+//  const handleUpdate = (data) => {
+//    if (this.state.fin.length === 0) {
+//      this.setState({ fin: [data] });
+//    } else if (this.state.fin.length !== 0) {
+//      let indexs = this.state.fin.findIndex((e) => e[0] === data[0]);
+//      console.log(indexs, "index");
+//      if (this.state.fin[indexs] !== undefined) {
+//        let newArr = [...this.state.fin];
+//        newArr[indexs] = data;
+//        this.setState({ fin: newArr });
+//      } else {
+//        this.setState({ fin: [...this.state.fin, data] });
+//      }
+//    }
+//  };

@@ -50,7 +50,7 @@ class Header extends Component {
           <nav className='header_category '>
             {this.props.category &&
               this.props.category.map((e) => (
-                <Link to='/' style={{ textDecoration: "none" }}>
+                <Link to='/' style={{ textDecoration: "none" }} key={e.name}>
                   <li
                     onClick={() => this.props.filterProducts(e.name)}
                     key={e.name}>
@@ -74,7 +74,6 @@ class Header extends Component {
                 onClick={() =>
                   this.setState({
                     clicked: this.state.clicked ? false : true,
-                    winHeight: window.screen.availHeight,
                   })
                 }>
                 <Arrow />
@@ -101,7 +100,7 @@ class Header extends Component {
                   winHeight: window.screen.availHeight,
                 })
               }>
-              <Cart />
+              <Cart color='black' />
               {this.props.cart.length !== 0 && (
                 <div className='header_badge'>{this.props.cart.length}</div>
               )}
