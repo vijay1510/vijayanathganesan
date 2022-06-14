@@ -46,7 +46,7 @@ class ProductDetails extends Component {
       const findIndexs = this.state.selectedAttributes.findIndex(
         (e) => e.id === data[0].id
       );
-      console.log(findIndexs);
+
       const newItem = [...this.state.selectedAttributes];
       newItem[findIndexs].item = data[0].item;
 
