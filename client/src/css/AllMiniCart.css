@@ -4,7 +4,8 @@
   border: 1px solid #fff;
   position: absolute;
   margin-left: -22%;
-  margin-top: 10px;
+  top: 75px;
+
   background-color: #fff;
   overflow: scroll;
   z-index: 1000;
@@ -96,4 +97,10 @@
   text-align: right;
   color: #1d1f22;
   margin-top: -5px;
+}
+
+@media (max-width: 979px) {
+  .all_mini {
+    left: 25%;
+  }
 }

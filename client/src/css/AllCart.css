@@ -11,7 +11,7 @@
   margin-left: 100px;
 }
 .all_cart_tax {
-  width: 184px;
+  width: auto;
   height: 28px;
   font-family: "Raleway";
   font-style: normal;
@@ -42,4 +42,13 @@
   margin-left: 90px;
   margin-top: 20px;
   margin-bottom: 150px;
+}
+
+@media (max-width: 500px) {
+  .all_cart_tax {
+    margin-left: 50px;
+  }
+  .all_cart_order {
+    margin-left: 50px;
+  }
 }

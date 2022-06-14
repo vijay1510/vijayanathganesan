@@ -12,6 +12,12 @@ const mapStateToProps = (state) => {
 
 class AllMiniCart extends Component {
   render() {
+    const totalPrice = this.props.cart?.map(
+      (e) =>
+        e.prices.find((e) => e.currency.symbol === this.props.symbol).amount *
+        e.amount
+    );
+
     return (
       <div className='all_mini example'>
         <h1 className='all_mini_bag'>
@@ -23,7 +29,10 @@ class AllMiniCart extends Component {
         ))}
         <p className='all_mini_total'>
           <strong> TOTAL</strong>
-          <span className='total_amt'>{this.props.symbol}300.00</span>
+          <span className='total_amt'>
+            {this.props.symbol}
+            {Math.round(totalPrice.reduce((e, a) => e + a, 0)).toFixed(2)}
+          </span>
         </p>
         <button className='all_mini_view'>
           <Link style={{ textDecoration: "none" }} to='/cart'>

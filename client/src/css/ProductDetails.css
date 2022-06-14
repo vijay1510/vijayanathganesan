@@ -100,25 +100,23 @@ img {
   margin-bottom: 15px;
   cursor: pointer;
 }
-.details_big_img {
-  margin-left: 10px;
-}
 
 @media (max-width: 1150px) {
+  .details {
+    flex-direction: column;
+    align-items: center;
+  }
   .details_gallery_items {
     display: inline;
+    margin-bottom: 50px;
   }
-  .details_big_img {
-    margin-left: -15%;
-    border-width: 520px;
-    border: none;
+  .details_content {
+    margin-top: 80px;
   }
-  .details {
-    margin-left: 10px;
-  }
-  .details_big_img img {
-    height: 450px;
-    width: 550px;
+
+  img {
+    height: 411px;
+    width: 350px;
     object-fit: contain;
   }
 }

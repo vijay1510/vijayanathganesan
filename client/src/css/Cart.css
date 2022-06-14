@@ -95,3 +95,10 @@
   line-height: 27px;
   color: #1d1f22;
 }
+
+@media (max-width: 1800px) {
+  .cart_hr {
+    margin-left: 0;
+    width: 100%;
+  }
+}

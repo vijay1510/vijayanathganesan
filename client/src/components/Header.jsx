@@ -38,6 +38,7 @@ class Header extends Component {
       categoryName: "tech",
     };
   }
+
   componentDidMount() {
     this.props.getCurrency();
     this.props.getCategory();
@@ -97,12 +98,13 @@ class Header extends Component {
               onClick={(e) =>
                 this.setState({
                   cartClicked: this.state.cartClicked ? false : true,
-                  winHeight: window.screen.availHeight,
                 })
               }>
               <Cart color='black' />
               {this.props.cart.length !== 0 && (
-                <div className='header_badge'>{this.props.cart.length}</div>
+                <div className='header_badge'>
+                  {this.props.cart.reduce((e, a) => e + a.amount, 0)}
+                </div>
               )}
 
               <div

@@ -35,13 +35,14 @@ class Product extends Component {
           <p
             className='product_icon'
             onClick={() =>
-              inStock &&
-              addToCart({
-                ...this.props,
-                amount: 1,
-                selectedAttributes: selectedAttribute,
-                altId: altId,
-              })
+              !inStock
+                ? alert("Sorry, This Is Product Is Out Of Stock")
+                : addToCart({
+                    ...this.props,
+                    amount: 1,
+                    selectedAttributes: selectedAttribute,
+                    altId: altId,
+                  })
             }>
             <Cart color='white' />
           </p>

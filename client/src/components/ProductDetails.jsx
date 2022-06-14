@@ -59,11 +59,11 @@ class ProductDetails extends Component {
           <div className='details_gallery'>
             {gallery.map((e) => (
               <img
-                key={id}
                 src={e}
                 alt={id}
                 className='details_gallery_items'
                 onClick={() => this.setState({ image: e })}
+                key={e}
               />
             ))}
           </div>
@@ -130,19 +130,3 @@ class ProductDetails extends Component {
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(ProductDetails)
 );
-
-//  const handleUpdate = (data) => {
-//    if (this.state.fin.length === 0) {
-//      this.setState({ fin: [data] });
-//    } else if (this.state.fin.length !== 0) {
-//      let indexs = this.state.fin.findIndex((e) => e[0] === data[0]);
-//      console.log(indexs, "index");
-//      if (this.state.fin[indexs] !== undefined) {
-//        let newArr = [...this.state.fin];
-//        newArr[indexs] = data;
-//        this.setState({ fin: newArr });
-//      } else {
-//        this.setState({ fin: [...this.state.fin, data] });
-//      }
-//    }
-//  };
