@@ -21,8 +21,10 @@ class AllMiniCart extends Component {
     return (
       <div className='all_mini example'>
         <h1 className='all_mini_bag'>
-          <strong> My Bag,</strong>
-          <span style={{ fontWeight: 300 }}> 3 items</span>
+          <strong> My Bag, </strong>
+          <span style={{ fontWeight: 500 }}>
+            {this.props.cart.reduce((e, a) => e + a.amount, 0)} items
+          </span>
         </h1>
         {this.props.cart.map((e) => (
           <MiniCart key={e.altId} {...e} />
@@ -35,7 +37,7 @@ class AllMiniCart extends Component {
           </span>
         </p>
         <button className='all_mini_view'>
-          <Link style={{ textDecoration: "none" }} to='/cart'>
+          <Link style={{ textDecoration: "none" }} to='/cart/total/products'>
             view bag
           </Link>
         </button>

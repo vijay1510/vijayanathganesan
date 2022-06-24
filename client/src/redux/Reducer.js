@@ -1,32 +1,15 @@
 const initialState = {
-  first: null,
-  allProducts: null,
-  filtered: null,
   details: null,
   currency: null,
   symbol: "$",
   cart: [],
   category: null,
-  getName: null,
+  name: null,
+  single: null,
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ALL_PRODUCTS": {
-      return {
-        ...state,
-        allProducts: action.payload,
-        first: action.payload.filter((e) => e.name === "all"),
-      };
-    }
-    case "FILTERED": {
-      return {
-        ...state,
-        filtered:
-          state.allProducts &&
-          state.allProducts.filter((e) => e.name === action.payload),
-      };
-    }
     case "PRODUCTS_DETAILS": {
       return {
         ...state,
@@ -100,7 +83,13 @@ export const reducer = (state = initialState, action) => {
     case "GET_NAME": {
       return {
         ...state,
-        getName: action.payload,
+        name: action.payload,
+      };
+    }
+    case "SINGLE_CATEGORY": {
+      return {
+        ...state,
+        single: action.payload,
       };
     }
     default:

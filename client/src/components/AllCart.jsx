@@ -26,20 +26,19 @@ class AllCart extends Component {
         <p className='all_cart_tax' style={{ marginTop: 20 }}>
           Tax 21%:{" "}
           <span style={{ fontWeight: 700, marginLeft: 10 }}>
-            {this.props.symbol}250.00
+            {this.props.symbol}42.00
           </span>
         </p>
         <p className='all_cart_tax'>
-          Quantity:{" "}
-          <span style={{ fontWeight: 700 }}>
-            {" "}
+          Quantity:
+          <span style={{ fontWeight: 700, marginLeft: 5 }}>
             {this.props.cart.reduce((e, a) => e + a.amount, 0)}
           </span>
         </p>
         <p className='all_cart_tax'>
           Total:
-          <span style={{ fontWeight: 700, marginLeft: 40 }}>
-            {this.props.symbol}{" "}
+          <span style={{ fontWeight: 700, marginLeft: 45 }}>
+            {this.props.symbol}
             {Math.round(totalPrice.reduce((e, a) => e + a, 0)).toFixed(2)}
           </span>
         </p>

@@ -29,7 +29,7 @@ class Cart extends Component {
       name,
       gallery,
       prices,
-      inStock,
+
       brand,
       attributes,
       altId,

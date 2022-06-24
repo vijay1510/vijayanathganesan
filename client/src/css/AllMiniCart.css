@@ -99,7 +99,7 @@
   margin-top: -5px;
 }
 
-@media (max-width: 979px) {
+@media (max-width: 1169px) {
   .all_mini {
     left: 25%;
   }

@@ -12,13 +12,13 @@ export default class App extends Component {
       <>
         <Header />
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/:category'>
             <AllProducts />
           </Route>
           <Route exact path='/product/:productDetails'>
             <ProductDetails />
           </Route>
-          <Route exact path='/cart'>
+          <Route exact path='/cart/total/products'>
             <AllCart />
           </Route>
         </Switch>

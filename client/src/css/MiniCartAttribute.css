@@ -8,12 +8,12 @@
   font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 16px;
   color: #1d1f22;
   text-transform: capitalize;
   margin-top: 5px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .mini_attributes_color {
   display: inline-block;
@@ -21,7 +21,7 @@
   height: 16px;
   margin-right: 8px;
   color: transparent;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 .mini_attributes_value {
@@ -29,10 +29,9 @@
   width: auto;
   height: 26px;
   padding: 2px;
-
   border: 1px solid #1d1f22;
   margin-right: 10px;
-  margin-top: 7px;
+  margin-top: 4px;
   font-family: "Source Sans Pro", sans-serif;
   font-style: normal;
   font-weight: 400;

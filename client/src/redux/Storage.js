@@ -1,6 +1,6 @@
 export const loadState = () => {
   try {
-    const localState = localStorage.getItem("products");
+    const localState = localStorage.getItem("scandiweb");
     if (localState === null) {
       return undefined;
     }
@@ -13,7 +13,7 @@ export const loadState = () => {
 export const saveState = (state) => {
   try {
     const localState = JSON.stringify(state);
-    localStorage.setItem("products", localState);
+    localStorage.setItem("scandiweb", localState);
   } catch (err) {
     return err;
   }

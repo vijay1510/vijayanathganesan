@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Markup } from "interweave";
 import Attributes from "./Attributes";
 import { getDetails, addToCart } from "../redux/Action";
 import { connect } from "react-redux";
@@ -115,11 +116,9 @@ class ProductDetails extends Component {
               }>
               ADD TO CART
             </button>
-            <div
-              className='details_description'
-              dangerouslySetInnerHTML={{
-                __html: description,
-              }}></div>
+            <div className='details_description'>
+              <Markup content={description} />
+            </div>
           </div>
         </div>
       </>

@@ -1,8 +1,8 @@
 import {
-  AllProducts,
   productDetails,
   currencyInfo,
   category,
+  singleCategory,
 } from "./Allqueries";
 
 //get category
@@ -35,47 +35,6 @@ const allCategory = (data) => {
 };
 
 //------------------------------------------------------------------
-
-//get all products
-
-export const getAllProducts = () => {
-  return async (dispatch, getState) => {
-    try {
-      const allproduct = await fetch("http://localhost:4000/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          query: AllProducts,
-        }),
-      });
-      const allproductJson = await allproduct.json();
-      dispatch(allProducts(allproductJson.data.categories));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-
-export const allProducts = (data) => {
-  return {
-    type: "ALL_PRODUCTS",
-    payload: data,
-  };
-};
-
-//-------------------------------------------------------------------------
-
-//filter products
-export const filterProducts = (data) => {
-  return {
-    type: "FILTERED",
-    payload: data,
-  };
-};
-
-//--------------------------------------------------------------
 
 //getProductDetails
 export const getDetails = (detail) => {
@@ -203,3 +162,33 @@ export const decrement = (data) => {
 };
 
 //-------------------------------------------
+
+//selecting single category
+
+export const getSingleCategory = (detail = "clothes") => {
+  return async (dispatch, getState) => {
+    try {
+      const categories = await fetch("http://localhost:4000/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: singleCategory,
+          variables: { id: detail },
+        }),
+      });
+      const allcategories = await categories.json();
+      dispatch(single(allcategories.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const single = (data) => {
+  return {
+    type: "SINGLE_CATEGORY",
+    payload: data,
+  };
+};

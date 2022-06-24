@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 class Product extends Component {
   render() {
-    const { id, name, gallery, prices, inStock, addToCart, attributes } =
+    const { id, name, gallery, prices, inStock, addToCart, attributes, brand } =
       this.props;
 
     const price = prices.filter((e) => e.currency.symbol === this.props.symbol);
@@ -51,7 +51,7 @@ class Product extends Component {
           <img src={gallery[0]} alt={id} className='product_img ' />
         </Link>
 
-        <h2 className='product_name'>{name}</h2>
+        <h2 className='product_name'>{`${brand} ${name}`}</h2>
         <p className='product_price'>
           <span style={{ marginRight: 2 }}>{price[0].currency.symbol}</span>
           {Math.round(price[0].amount).toFixed(2)}
