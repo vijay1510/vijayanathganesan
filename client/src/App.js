@@ -12,6 +12,9 @@ export default class App extends Component {
       <>
         <Header />
         <Switch>
+          <Route exact path='/'>
+            <AllProducts />
+          </Route>
           <Route exact path='/:category'>
             <AllProducts />
           </Route>

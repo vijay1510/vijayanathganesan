@@ -51,7 +51,7 @@ class MiniCart extends Component {
             </h1>
 
             <p className='mini_price'>
-              <span style={{ marginRight: 2 }}>{price[0].currency.symbol}</span>
+              <span>{price[0].currency.symbol}</span>
               {Math.round(price[0].amount).toFixed(2)}
             </p>
             {attributes &&

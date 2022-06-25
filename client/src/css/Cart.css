@@ -74,6 +74,9 @@
   color: #1d1f22;
   margin-top: 10px;
 }
+.cart_price span {
+  margin-right: 2px;
+}
 .cart_brand {
   width: 292px;
   height: 27px;

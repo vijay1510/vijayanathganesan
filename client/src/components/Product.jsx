@@ -29,31 +29,32 @@ class Product extends Component {
     const newId = selectedAttribute.map((e) => e.item.displayValue);
     const altId = id + newId.join("");
 
+    const handleClick = (event) => {
+      event.stopPropagation();
+      !inStock
+        ? alert("Sorry, This Is Product Is Out Of Stock")
+        : addToCart({
+            ...this.props,
+            amount: 1,
+            selectedAttributes: selectedAttribute,
+            altId: altId,
+          });
+    };
+
     return (
-      <div style={{ opacity: !inStock ? 0.4 : 1 }} className='product'>
+      <div className={`product ${!inStock ? "product_blur" : ""}`}>
         <div className='product_cart'>
-          <p
-            className='product_icon'
-            onClick={() =>
-              !inStock
-                ? alert("Sorry, This Is Product Is Out Of Stock")
-                : addToCart({
-                    ...this.props,
-                    amount: 1,
-                    selectedAttributes: selectedAttribute,
-                    altId: altId,
-                  })
-            }>
+          <p className='product_icon' onClick={(e) => handleClick(e)}>
             <Cart color='white' />
           </p>
         </div>
-        <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
+        <Link to={`/product/${id}`} className='link'>
           <img src={gallery[0]} alt={id} className='product_img ' />
         </Link>
 
         <h2 className='product_name'>{`${brand} ${name}`}</h2>
         <p className='product_price'>
-          <span style={{ marginRight: 2 }}>{price[0].currency.symbol}</span>
+          <span>{price[0].currency.symbol}</span>
           {Math.round(price[0].amount).toFixed(2)}
         </p>
         {!inStock && <p className='product_stock'>OUT OF STOCK</p>}

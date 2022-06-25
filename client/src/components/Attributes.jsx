@@ -89,6 +89,7 @@ class Attributes extends Component {
                 `}
             style={{
               backgroundColor: item.value,
+              boxShadow: " 0px 5px 20px 3px rgba(168, 172, 176, 0.19)",
             }}>
             {attributes.id === "Color" ? "" : item.value}
           </div>

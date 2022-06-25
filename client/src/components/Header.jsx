@@ -12,7 +12,7 @@ import {
   getSingleCategory,
   getName,
 } from "../redux/Action";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AllMiniCart from "./AllMiniCart";
 
 const mapStateToProps = (state) => {
@@ -27,7 +27,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { getCurrency, symbolChange, getCategory, getSingleCategory, getName },
+    {
+      getCurrency,
+      symbolChange,
+      getCategory,
+      getSingleCategory,
+      getName,
+    },
     dispatch
   );
 };
@@ -35,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
 class Header extends Component {
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
     this.state = {
       clicked: true,
       cartClicked: true,
@@ -44,32 +51,35 @@ class Header extends Component {
   componentDidMount() {
     this.props.getCurrency();
     this.props.getCategory();
+    this.props.getSingleCategory("all");
+
+    document.addEventListener("mousedown", (event) => {
+      if (!this.myRef.current?.contains(event.target)) {
+        this.setState({ clicked: true });
+      }
+    });
   }
 
   render() {
     const handleClick = (e) => {
       this.props.getSingleCategory(e);
       this.props.getName(e);
-      console.log(window.location.href);
     };
+
     return (
       <>
         <header className='header'>
           <nav className='header_category '>
             {this.props.category &&
               this.props.category.map((e) => (
-                <Link
+                <NavLink
+                  className='header_name'
+                  activeClassName='active'
                   to={`/${e.name}`}
-                  style={{ textDecoration: "none" }}
+                  onClick={() => handleClick(e.name)}
                   key={e.name}>
-                  <li
-                    href='/#'
-                    className={e.name === this.props.name ? "header_name" : ""}
-                    onClick={() => handleClick(e.name)}
-                    key={e.name}>
-                    {e.name}
-                  </li>
-                </Link>
+                  {e.name}
+                </NavLink>
               ))}
           </nav>
           <nav className='header_logo'>
@@ -77,7 +87,7 @@ class Header extends Component {
               <Logo />
             </li>
           </nav>
-          <nav className='header_cart'>
+          <nav className='header_cart' ref={this.myRef}>
             <li
               onClick={() =>
                 this.setState({
@@ -86,7 +96,6 @@ class Header extends Component {
               }>
               {this.props.symbol}
               <span
-                style={{ marginLeft: 10 }}
                 onClick={() =>
                   this.setState({
                     clicked: !this.state.clicked,
@@ -125,12 +134,13 @@ class Header extends Component {
             </li>
           </nav>
         </header>
-        <div
-          onClick={() =>
-            this.setState({ cartClicked: !this.state.cartClicked })
-          }
-          className='header_blur'
-          style={{ display: !this.state.cartClicked ? "block" : "none" }}></div>
+        {!this.state.cartClicked && (
+          <div
+            onClick={() =>
+              this.setState({ cartClicked: !this.state.cartClicked })
+            }
+            className='header_blur'></div>
+        )}
       </>
     );
   }

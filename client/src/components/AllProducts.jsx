@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
     first: state.first,
     filtered: state.filtered,
     single: state.single,
+    name: state.name,
   };
 };
 
@@ -21,7 +22,11 @@ class AllProducts extends Component {
   render() {
     return (
       <>
-        <h1 className='allproducts_name'>{this.props.single?.category.name}</h1>
+        <h1 className='allproducts_name'>
+          {this.props.name === this.props.single?.category.name
+            ? this.props.single.category.name
+            : ""}
+        </h1>
 
         {this.props.single && (
           <div className='allproducts'>

@@ -2,10 +2,15 @@
   margin-right: 8%;
   margin-bottom: 100px;
   width: 386px;
-  height: auto;
+  height: 464px;
   background-color: #fff;
-  padding: 16px;
   border: 1px solid #fff;
+  position: relative;
+  padding: 1rem;
+}
+
+.product_blur {
+  opacity: 0.4;
 }
 .product:hover {
   box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
@@ -13,8 +18,8 @@
 .product_img {
   height: 338px;
   width: 356px;
-  object-fit: contain;
-  border: 1px solid #fff;
+  object-fit: cover;
+  object-position: top;
 }
 
 .product_name {
@@ -39,6 +44,9 @@
   margin-left: 10px;
   margin-top: 5px;
 }
+.product_price span {
+  margin-right: 2px;
+}
 .product_stock {
   position: relative;
   top: -210px;
@@ -57,10 +65,11 @@
   width: 50px;
   border-radius: 100%;
   background-color: #5ece7b;
-  position: relative;
+  position: absolute;
   left: 80%;
-  top: 360px;
+  top: 320px;
   visibility: hidden;
+  z-index: 2000;
 }
 .product:hover .product_cart {
   visibility: visible;

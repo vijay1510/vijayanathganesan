@@ -22,6 +22,22 @@
   margin-bottom: 7px;
   margin-left: 95px;
 }
+.tax_margin {
+  margin-top: 20px;
+}
+.tax_rate {
+  font-weight: 700;
+  margin-left: 10px;
+}
+.quantity_number {
+  font-weight: 700;
+  margin-left: 5px;
+}
+.total_rate {
+  font-weight: 700;
+  margin-left: 45px;
+}
+
 .all_cart_order {
   display: flex;
   flex-direction: column;

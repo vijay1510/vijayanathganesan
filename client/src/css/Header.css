@@ -8,7 +8,6 @@
 
 .header_name {
   text-decoration: none;
-
   margin-left: 5px;
   cursor: pointer;
   text-transform: uppercase;
@@ -41,12 +40,11 @@ nav li {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-
   color: #1d1f22;
 }
 .header_dialog {
   position: absolute;
-  width: 100px;
+  width: 115px;
   height: auto;
   border: 1px solid #eee;
   background-color: #fff;
@@ -64,32 +62,27 @@ nav li {
   text-align: center;
   color: #1d1f22;
   background-color: #fff;
-
-  height: auto;
-
+  width: 114px;
+  height: 45px;
   margin-bottom: 5px;
+  padding: 10px;
 }
 .header_currency:hover {
   background-color: #eee;
 }
 
-/* .header_name:focus {
+.active {
+  border-bottom: 2px solid #5ece7b;
   color: #5ece7b;
   font-weight: 600;
-  border-bottom: 2px solid #5ece7b;
-  padding-bottom: 25px;
-} */
-
-.header_name {
-  color: #5ece7b;
-  font-weight: 600;
-  border-bottom: 2px solid #5ece7b;
-  padding-bottom: 25px;
 }
 
 .header_cart {
   display: flex;
   justify-content: space-between;
+}
+.header_cart span {
+  margin-left: 10px;
 }
 
 .header_blur {

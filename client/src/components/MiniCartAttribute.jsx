@@ -37,7 +37,6 @@ class MiniCartAttribute extends Component {
   }
   render() {
     const attributes = this.props;
-    //console.log(this.props.fin[0][1], "attribur");
 
     const handleClick = (k) => {
       this.setState({
@@ -45,7 +44,6 @@ class MiniCartAttribute extends Component {
         cart: k.displayValue,
       });
       this.props.handleUpdate({ id: attributes.id, k });
-      //console.log([attributes.id, k.displayValue]);
     };
 
     return (
@@ -93,6 +91,7 @@ class MiniCartAttribute extends Component {
                 `}
             style={{
               backgroundColor: item.value,
+              boxShadow: " 0px 5px 20px 3px rgba(168, 172, 176, 0.19)",
             }}>
             {attributes.id === "Color" ? "" : item.value}
           </div>

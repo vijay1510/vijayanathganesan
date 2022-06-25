@@ -23,21 +23,18 @@ class AllCart extends Component {
           <Cart key={e.altId} {...e} />
         ))}
         <hr className='cart_hr' />
-        <p className='all_cart_tax' style={{ marginTop: 20 }}>
-          Tax 21%:{" "}
-          <span style={{ fontWeight: 700, marginLeft: 10 }}>
-            {this.props.symbol}42.00
-          </span>
+        <p className='all_cart_tax tax_margin'>
+          Tax 21%: <span className='tax_rate'>{this.props.symbol}42.00</span>
         </p>
         <p className='all_cart_tax'>
           Quantity:
-          <span style={{ fontWeight: 700, marginLeft: 5 }}>
+          <span className='quantity_number'>
             {this.props.cart.reduce((e, a) => e + a.amount, 0)}
           </span>
         </p>
         <p className='all_cart_tax'>
           Total:
-          <span style={{ fontWeight: 700, marginLeft: 45 }}>
+          <span className='total_rate'>
             {this.props.symbol}
             {Math.round(totalPrice.reduce((e, a) => e + a, 0)).toFixed(2)}
           </span>

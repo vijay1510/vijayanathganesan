@@ -30,6 +30,9 @@
   text-align: right;
   color: #1d1f22;
 }
+.mini_price span {
+  margin-left: 0;
+}
 .mini_img {
   width: 121px;
   height: 190px;

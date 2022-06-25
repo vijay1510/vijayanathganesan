@@ -69,7 +69,11 @@ img {
   font-size: 24px;
   line-height: 18px;
   color: #1d1f22;
-  margin-top: 8px;
+  margin-top: 15px;
+}
+
+.details_price_value span {
+  margin-right: 2px;
 }
 .details_btn {
   padding: 16px 32px;

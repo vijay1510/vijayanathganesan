@@ -92,6 +92,7 @@ export const reducer = (state = initialState, action) => {
         single: action.payload,
       };
     }
+
     default:
       return state;
   }

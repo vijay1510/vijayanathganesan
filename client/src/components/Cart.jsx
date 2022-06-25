@@ -47,7 +47,7 @@ class Cart extends Component {
             <h3 className='cart_name'>{name}</h3>
 
             <p className='cart_price'>
-              <span style={{ marginRight: 2 }}>{price[0].currency.symbol}</span>
+              <span>{price[0].currency.symbol}</span>
               {Math.round(price[0].amount).toFixed(2)}
             </p>
             {attributes &&
