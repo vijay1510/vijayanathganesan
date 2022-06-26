@@ -39,8 +39,16 @@ class ProductDetails extends Component {
   }
   render() {
     if (this.props.details === null) return <h1>loading.......</h1>;
-    const { id, name, description, gallery, attributes, brand, prices } =
-      this.props.details;
+    const {
+      id,
+      name,
+      description,
+      gallery,
+      attributes,
+      brand,
+      prices,
+      inStock,
+    } = this.props.details;
     const price = prices.filter((e) => e.currency.symbol === this.props.symbol);
 
     const handleUpdate = (...data) => {
@@ -96,23 +104,27 @@ class ProductDetails extends Component {
             <button
               className='details_btn'
               onClick={() =>
-                this.props.addToCart({
-                  id,
-                  name,
-                  gallery,
-                  attributes,
-                  brand,
-                  prices,
-                  alt: this.state.alt,
-                  selectedAttribute: this.state.selectedAttributes,
-                  amount: 1,
-                  selected: this.state.selectedAttributes.map((e) => e.item),
-                  altId:
-                    id +
-                    this.state.selectedAttributes
-                      .map((e) => e.item.displayValue)
-                      .join(""),
-                })
+                inStock
+                  ? this.props.addToCart({
+                      id,
+                      name,
+                      gallery,
+                      attributes,
+                      brand,
+                      prices,
+                      alt: this.state.alt,
+                      selectedAttribute: this.state.selectedAttributes,
+                      amount: 1,
+                      selected: this.state.selectedAttributes.map(
+                        (e) => e.item
+                      ),
+                      altId:
+                        id +
+                        this.state.selectedAttributes
+                          .map((e) => e.item.displayValue)
+                          .join(""),
+                    })
+                  : alert("Sorry, This Is Product Is Out Of Stock")
               }>
               ADD TO CART
             </button>

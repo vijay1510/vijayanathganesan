@@ -55,7 +55,7 @@ class Header extends Component {
 
     document.addEventListener("mousedown", (event) => {
       if (!this.myRef.current?.contains(event.target)) {
-        this.setState({ clicked: true });
+        this.setState({ clicked: true, cartClicked: true });
       }
     });
   }

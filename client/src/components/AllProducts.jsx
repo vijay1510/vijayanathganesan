@@ -22,6 +22,7 @@ class AllProducts extends Component {
   render() {
     return (
       <>
+        {this.props.single === null && <h1>Loading</h1>}
         <h1 className='allproducts_name'>
           {this.props.name === this.props.single?.category.name
             ? this.props.single.category.name
